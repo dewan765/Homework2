@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+
+  <body>
+    <script>
+    class Actor {
+      constructor(x,y) {
+        this.x = x;
+        this.y = y;
+      }
+      move(horizontal, vertical) {
+        this.x += horizontal;
+        this.y += vertical;
+      }
+      distanceTo(otherActor) {
+        let dx = otherActor.x - this.x;
+        let dy = otherActor.y - this.y;
+        let distance = Math.sqrt(
+          Math.pow(dx, 2) + Math.pow(dy, 2));
+          return distance;
+      }
+    }
+    class Player extends Actor {
+      constructor(x,y){
+        this.x = x;
+        this.y = y;
+        this.HP = 100;
+      }
+      
+    }
+    class Enemy extends Actor {
+      attack(Player) {
+        if (this.distanceTo(Player) < 4) {
+          Player.hp -= 10;
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+    }
+    let player1 = new Player(0,0);
+    let enemy1 = new Enemy(1,1);
+    enemy1.attack(player1);
+    console.log(player1.HP);
+
+    class Follower extends Actor {
+      constructor(startX, startY) {
+        this.startX = startX;
+        this.startY = startY;
+        this.player = player;
+      }
+    }
+    </script>
+  </body>
+</html>
