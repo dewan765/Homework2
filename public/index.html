@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>George's Word of the Day</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to George's Word of the Day Page</h1>
+    <p>Everytime you visit we will show you a new word and its definition</p>    
+    <p>This page has been visited <span id='hits'></span> times</p>
+    <p>
+        <a href="word.html">View the word of the day</a>
+    </p>
+</body>
+<script>
+    fetch('/hits')
+    .then(response => response.json())
+    .then(
+        data=>{
+            document.getElementById('hits').textContent = data.hits;
+        }
+    )
+</script>
+</html>
